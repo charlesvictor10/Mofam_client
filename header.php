@@ -69,7 +69,6 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <ul class="header-cart-wrap">
                             <li><a class="cart" href="liste_panier.php">
-                                Mon Panier:
                                     <?php if(isset($_SESSION['panier'])){
                                         echo '<span style="color:#0da241">'.qte().'</span>';
                                     }

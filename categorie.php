@@ -103,12 +103,7 @@ include_once 'inc/define.php';
                                 <div class="toolbar">
                                     <div class="sorter">
                                         <div class="sort-by">
-                                            <label class="sort-none">Trier par</label>
-                                            <select>
-                                                <option value="designation">Nom</option>
-                                                <option value="prix">Prix</option>
-                                            </select>
-                                            <a class="up-arrow" href="#"><i class="fa fa-long-arrow-up"></i></a>
+                                            <a class="down-arrow" href="#"><i class="fa fa-long-arrow-down"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +127,7 @@ include_once 'inc/define.php';
                                         $arr1 = Liste_par_produits_limite($pdo,$ar[0]);
                                         ?>
                                         <!-- Start-single-product -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="text-align: center;">
                                             <div class="single-product shop-mar-bottom">
                                                 <div class="product-img-wrap">
                                                     <a class="product-img" href="#"><img src="data:<?php echo $arr1[0][3]; ?>;base64,<?php echo base64_encode($arr1[0][1]); ?>" alt="<?php echo $arr1[0][2]; ?>"/></a>
@@ -156,7 +151,7 @@ include_once 'inc/define.php';
                                                         </div>
                                                         <div class="pro-price">
                                                             <span class="price-text">Prix:</span>
-                                                            <span class="normal-price"><?php echo $ar[4]; ?> fcfa</span>
+                                                            <span class="normal-price"><?php echo $ar[4]; ?> FCFA</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -191,20 +186,20 @@ include_once 'inc/define.php';
                                                         <a class="product-img" href="#"> <img src="data:<?php echo $arr1[0][3]; ?>;base64,<?php echo base64_encode($arr1[0][1]); ?>" alt="<?php echo $arr1[0][2]; ?>"/></a>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-left: 70px; margin-top: 20px;">
                                                     <div class="product-info text-left">
                                                         <div class="product-content shop">
                                                             <a href="#"><h3 class="pro-name"><?php echo $ar[2]; ?></h3></a>
                                                             <div class="pro-price">
                                                                 <span class="price-text">Prix:</span>
-                                                                <span class="normal-price"><?php echo $ar[4]; ?> fcfa</span>
+                                                                <span class="normal-price"><?php echo $ar[4]; ?> FCFA</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="shop-article text-left">
                                                         <p><?php echo $ar[3]; ?></p>
                                                     </div>
-                                                    <div class="shop-button-area shop-list">
+                                                    <div class="shop-button-area shop-list" style="margin-left: -30px; margin-top: -1px;">
                                                         <div class="add-to-cartbest shop">
                                                             <a href="panier_ajouter.php?prod=<?php echo $ar[0]; ?>&qtte=1&prix=<?php echo $ar[4]; ?>&loc=categorie.php?souscat=<?php echo $ar[0]; ?>" title="add to cart">
                                                                 <div><span>Ajouter au panier</span></div>
@@ -233,11 +228,6 @@ include_once 'inc/define.php';
                                 <div class="toolbar">
                                     <div class="sorter">
                                         <div class="sort-by">
-                                            <label class="sort-none">Trier par</label>
-                                            <select>
-                                                <option value="designation">Nom</option>
-                                                <option value="prix">Prix</option>
-                                            </select>
                                             <a class="up-arrow" href="#"><i class="fa fa-long-arrow-up"></i></a>
                                         </div>
                                     </div>
