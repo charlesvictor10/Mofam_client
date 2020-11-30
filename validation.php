@@ -11,7 +11,7 @@ include_once 'inc/define.php';
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php echo _SITE_NAME; ?></title>
     <meta name="description" content="">
@@ -86,27 +86,31 @@ include_once 'inc/define.php';
     <?php
     //On verifie si le formulaire a ete envoye
     if(isset($_POST['submit'])){
-        $_POST['code'] = "COMMANDE/".nombre($pdo);
+        $_POST['code'] = "BCB".nombre($pdo);
         $_POST['date_commande'] = date("Y-m-d");
         $_POST['etat'] = "Attente";
         if(ajoute_commande($pdo,$_POST['code'],intval($_SESSION['id_acheteur']),$_POST['date_commande'],montant_panier(),$_POST['etat'])){
             $form = true;
             $message = 'Une erreur est survenue lors de la validation de votre commande.';
         } else {
+            //$id_com = intval(getIdCommande($pdo,$_POST['code']));
+            //var_dump($id_com, $_POST['code']);
             for($i=0; $i < nbr(); $i++){
-                $id_com = getIdCommande($pdo,$_POST['code']);
-                if(ajouter_produit_commande($pdo,$_SESSION['panier']['id_article'],$_SESSION['panier']['qte'][$i],$id_com)){
+                $qte = $_SESSION['panier']['qte'][$i];
+                $prods = get_produit($pdo, $_SESSION['panier']['id_article'][$i]);
+                $id_produit = intval($prods['id_produit']);
+                if(ajouter_produit_commande($pdo,$qte,$id_produit,$_POST['code'])){
                     $form = true;
-                    $message = 'Une erreur est survenue lors l\'enregistrement des produits.';
+                    $message = 'Une erreur est survenue lors de l\'enregistrement des produits.';
                 } else {
                     $form = false;
-                    ?>
-                    <div class="message">Votre commande a été bien enregistré.<br />
-                        <a href="my-account.php" onclick="vider(this)">Mes commandes</a>
-                    </div>
-                    <?php
                 }
             }
+            ?>
+            <div class="message">Votre commande a été bien enregistré.<br />
+                <a href="my-account.php" onclick="vider(this)">Mes commandes</a>
+            </div>
+            <?php
         }
     } else {
         $form = true;
@@ -244,7 +248,7 @@ include_once 'inc/define.php';
                                         ?>
                                         <tr class="cart_item">
                                             <td class="product-name">
-                                                <?php echo $produits['designation'];?> <strong class="product-quantity"> × <?php echo $_SESSION['panier']['qte'][$i];?></strong>
+                                                <?php echo $produits['designation'];?> <strong class="product-quantity"> × <?php echo intval($_SESSION['panier']['qte'][$i]);?></strong>
                                             </td>
                                             <td class="product-total">
                                                 <span class="amount"><?php echo $produits['prix'] * $_SESSION['panier']['qte'][$i];?></span> FCFA
@@ -273,7 +277,7 @@ include_once 'inc/define.php';
                                 </table>
                             </div>
                             <div class="order-button-payment">
-                                <input type="submit" name="submit" value="Terminer commande" />
+                                <input type="submit" name="submit" value="Terminer commande"/>
                             </div>
                         </div>
                     </div>
@@ -325,7 +329,7 @@ include_once 'inc/define.php';
     <script LANGUAGE="JavaScript">
         function vider(shamp)
         {
-            if (confirm("Voulez-vous vraiment vidé le panier ?")) {
+            if (confirm("Voulez-vous vraiment vider le panier ?")) {
                 shamp.href ="vider_panier.php";
             }
             else

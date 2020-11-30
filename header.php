@@ -70,10 +70,10 @@
                         <ul class="header-cart-wrap">
                             <li><a class="cart" href="liste_panier.php">
                                     <?php if(isset($_SESSION['panier'])){
-                                        echo '<span style="color:#0da241">'.qte().'</span>';
+                                        echo '<span style="color:#0da241; margin-left: -15px;">'.qte().'</span>';
                                     }
                                     else {
-                                        echo '<span style="color:#dd1e1e">0</span>';
+                                        echo '<span style="color:#dd1e1e; margin-left: -15px;">0</span>';
                                     }?>
                                 </a>
                             </li>

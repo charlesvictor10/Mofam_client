@@ -36,8 +36,8 @@ function liste_par_categorie($pdo, $categorie)
 }
 
 //Fonction qui permet d'afficher les produits 
-function liste_limite_produit($pdo,$start_from,$num_per_page){
-  $sql = 'SELECT id_produit,sous_categorie.libelle_sous_cat,designation,description,prix,quantite,etat,date_commande FROM produits,sous_categorie WHERE produits.sous_categorie_id = sous_categorie.id_sous_cat AND etat = 1 AND quantite > 0 ORDER BY date_commande DESC LIMIT '.$start_from.','.$num_per_page.' ';
+function liste_limite_produit($pdo,$id_sousCat,$start_from,$num_per_page){
+  $sql = 'SELECT id_produit,date_commande,description,designation,etat,prix,proprietaire,quantite,sous_categorie_id,ville_id FROM produits WHERE sous_categorie_id = "'.$id_sousCat.'" AND etat = 1 AND quantite > 0 ORDER BY date_commande DESC LIMIT '.$start_from.','.$num_per_page.' ';
 
   try{
     $prep = $pdo->prepare($sql);
@@ -62,7 +62,7 @@ function pagination($pdo){
     $prep = NULL;
     return $arr;
   } catch(Exception $e) {
-    die('Erreur produit ' .$e->getMessage());
+    die('Erreur produit '.$e->getMessage());
   }
 }
 
@@ -78,6 +78,21 @@ function Liste_par_produits_limite($pdo,$id_produit){
     return $arr;
   } catch(Exception $e) {
     die('Erreur photo ' .$e->getMessage());
+  }
+}
+
+function Location_produit($pdo,$id_ville){
+  $sql = 'SELECT nom_ville from ville where id_ville="'.$id_ville.'" LIMIT 0,1';
+
+  try{
+    $prep = $pdo->prepare($sql);
+    $prep->execute();
+    $arr = $prep->fetchAll();
+    $prep->closeCursor();
+    $prep = NULL;
+    return $arr;
+  } catch(Exception $e) {
+    die('Erreur ville '.$e->getMessage());
   }
 }
 
@@ -97,7 +112,7 @@ function Liste_par_partenaires_limite($pdo,$id_partener){
 }
 
 function liste_last_produit($pdo){
-  $sql = 'SELECT id_produit,sous_categorie.libelle_sous_cat,designation,description,prix,quantite,etat,date_commande FROM produits,sous_categorie WHERE produits.sous_categorie_id = sous_categorie.id_sous_cat AND etat = 1 AND quantite > 0 ORDER BY date_commande DESC LIMIT 0,3';
+  $sql = 'SELECT id_produit,sous_categorie.libelle_sous_cat,designation,description,prix,quantite,etat,date_commande FROM produits,sous_categorie WHERE produits.sous_categorie_id = sous_categorie.id_sous_cat AND etat = 1 AND quantite > 0 ORDER BY date_commande DESC LIMIT 0,4';
 
   try{
     $prep = $pdo->prepare($sql);
@@ -130,7 +145,7 @@ function recherche_produit($pdo,$nom){
 //Fonction pour inscrire un acheteur
 function inscription($pdo,$prenom,$nom,$email,$password,$tel,$actived,$adresse,$ville_id)
 {
-	$sql = 'INSERT INTO acheteur(nom,prenom,email,password,tel,etat,adresse,ville_id) VALUES (:nom, :prenom, :email, :password, :tel, :actived, :adresse, :ville_id)';
+	$sql = 'INSERT INTO acheteur(nom,prenom,email,password,tel,actived,adresse,ville_id) VALUES (:nom, :prenom, :email, :password, :tel, :actived, :adresse, :ville_id)';
 
 	try{
 		$prep = $pdo->prepare($sql);
@@ -385,17 +400,15 @@ function getIdCommande($pdo,$code){
   }
 }
 
-function ajouter_produit_commande($pdo,$quantite,$id_produit,$id_com){
-  $sql = 'INSERT INTO produit_commande(quantite,id_produit,id_com) VALUES(:quantite,:id_produit,:id_com)';
+function ajouter_produit_commande($pdo,$quantite,$id_produit,$code){
+  $sql = 'INSERT INTO produit_commande(quantite,id_produit,code) VALUES(:quantite,:id_produit,:code)';
 
   try{
     $prep = $pdo->prepare($sql);
     $prep->bindValue(':quantite', $quantite, PDO::PARAM_INT);
     $prep->bindValue(':id_produit', $id_produit, PDO::PARAM_INT);
-    $prep->bindValue(':id_com', $id_com, PDO::PARAM_INT);
+    $prep->bindValue(':code', $code, PDO::PARAM_STR);
     $prep->execute();
-    $prep->closeCursor();
-    $prep = NULL;
   } catch(Exception $e){
     die('Erreur d\'ajout '.$e->getMessage());
   }

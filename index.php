@@ -3,9 +3,9 @@
     include_once 'inc/define.php';
 ?>
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <head>
-        <meta charset="utf-8">
+        <meta charset='UTF-8'>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title><?php echo _SITE_NAME; ?></title>
         <meta name="description" content="">
@@ -181,20 +181,163 @@
             </div>
             <!--End-featured-area-->
             <div class="clear"></div>
-            <!--Start-latest-trend-area-->
-            <div class="latest-trend-wrap padding-t home-2 home-7">
-                <div class="bg-trend"></div>
+            <!--Start-blog-area-->
+            <div class="latest-blog-wrap padding-t home-2 home-7">
                 <div class="container">
+                    <!--start-blog-area-heading-->
                     <div class="row">
-                        <div class="trend-content">
-                            <h3>The</h3>
-                            <h1>Latest Trend</h1>
-                            <p>This season must-haves...</p>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="blog-heading">
+                                <div class="section-heading">
+                                    <h3><span class="h-color">Mofam</span> pour une bonne sante</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end-blog-area-heading-->
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <!--start-single-blog-area-->
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="images/sante/1.jpg" alt="bettrave"></a>
+                                    </div>
+                                    <div class="blog-inner-content">
+                                        <div class="blog-title">
+                                            <h4>Les betteraves</h4>
+                                        </div>
+                                        <div class="post-time">
+                                            <p>Grâce à son puissant pouvoir antioxydant, <span class="normal-price">la betterave</span> fait partie de ce qu’on appelle les «superaliments».
+                                                Elle est aussi une bonne source de vitamines A, K, B2, B9, de fibres, de calcium, de magnésium, de manganèse,
+                                                de cuivre et de fer. il facilite la circulation du sang en augmentant le taux de globules blancs et de globules rouges.</p>
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-readmore" href="#">En savoir plus <span><i class="fa fa-long-arrow-right"></i></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-single-blog-area-->
+                            <!--start-single-blog-area-->
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="images/sante/2.jpg" alt="brocoli"></a>
+                                    </div>
+                                    <div class="blog-inner-content">
+                                        <div class="blog-title">
+                                            <h4>Les brocolis</h4>
+                                        </div>
+                                        <div class="post-time">
+                                            <p>Légume de la famille des crucifères, <span class="normal-price">le brocoli</span> constitue une excellente source de vitamines C
+                                                et K et une bonne source de vitamines A, B2, B5, B6, B9, E, de cuivre, de fer, de magnésium,
+                                                de manganèse, de phosphore et de potassium. Il pourrait être associé à un risque plus faible de cancer colorectal et de l'estomac.</p>
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-readmore" href="#">En savoir plus <span><i class="fa fa-long-arrow-right"></i></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-single-blog-area-->
+                            <!--start-single-blog-area-->
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="images/sante/3.jpg" alt="epinards"></a>
+                                    </div>
+                                    <div class="blog-inner-content">
+                                        <div class="blog-title">
+                                            <h4>Les épinards</h4>
+                                        </div>
+                                        <div class="post-time">
+                                            <p><span class="normal-price">Les épinards</span>, mais également les autres légumes feuillus vert foncé renferment des vitamines B9,
+                                                B6 et K, du bêta-carotène, des fibres, du magnésium, du phosphore, du potassium, du zinc, du calcium
+                                                et du manganèse. Ils contiennent également du fer, mais en quantité moindre qu’on le pensait autrefois.</br>
+                                                </p>
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-readmore" href="#">En savoir plus <span><i class="fa fa-long-arrow-right"></i></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-single-blog-area-->
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 50px;">
+                            <!--start-single-blog-area-->
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="images/sante/4.jpg" alt="kiwi"></a>
+                                    </div>
+                                    <div class="blog-inner-content">
+                                        <div class="blog-title">
+                                            <h4>Les kiwis</h4>
+                                        </div>
+                                        <div class="post-time">
+                                            <p>Un <span class="normal-price">kiwi</span>équivaut à lui seul 40 kcal et assure nos besoins journaliers conseillés en vitamine C. Riche en minéraux,
+                                                il recharge l'organisme en potassium, en fer, en cuivre, en calcium et agît contre la paresse intestinale.
+                                                Pris au petit déjeuner, le kiwi est notre conseil pleine forme pour toute la journée.</p>
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-readmore" href="#">En savoir plus <span><i class="fa fa-long-arrow-right"></i></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-single-blog-area-->
+                            <!--start-single-blog-area-->
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="images/sante/5.jpg" alt="clementine"></a>
+                                    </div>
+                                    <div class="blog-inner-content">
+                                        <div class="blog-title">
+                                            <h4>La clémentine</h4>
+                                        </div>
+                                        <div class="post-time">
+                                            <p>Véritable star de l'hiver et facile à consommer à n'importe quel moment de la journée, <span class="normal-price">la clémentine</span> est un
+                                                fruit excellent pour la santé. Très peu calorique, riche en vitamine C, en minéraux et oligo-éléments,
+                                                elle possède de nombreuses propriétés anti-infectieuses. Les bienfaits de la clémentine sont reconnus unanimement.</p>
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-readmore" href="#">En savoir plus <span><i class="fa fa-long-arrow-right"></i></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-single-blog-area-->
+                            <!--start-single-blog-area-->
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="images/sante/6.jpg" alt="pomme"></a>
+                                    </div>
+                                    <div class="blog-inner-content">
+                                        <div class="blog-title">
+                                            <h4>Les pommes</h4>
+                                        </div>
+                                        <div class="post-time">
+                                            <p>Les bienfaits de <span class="normal-price">la pomme</span>sont visibles à l'œil nu. La beauté de notre peau et de notre teint sont liés
+                                                directement à sa consommation. Elle joue aussi un rôle sur la diminution du taux de cholestérol et
+                                                stabilise la glycémie. Riche en minéraux et en vitamines, elle est source d'un bon équilibre nutritionnel.
+                                                Ses fibres régularisent le transit intestinal.</p>
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-readmore" href="#">En savoir plus <span><i class="fa fa-long-arrow-right"></i></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end-single-blog-area-->
                         </div>
                     </div>
                 </div>
             </div>
-            <!--End-latest-trend-area-->
+            <!--End-blog-area-->
             <div class="clear"></div>
             <!--Start-latest-testimonials-->
             <div class="latest-testimonial-wrap home-2 home-7">
@@ -262,35 +405,25 @@
                 </div>
             </div>
             <!--End-latest-testimonials-->
-            <!--Start-latest-products-wrap-->
-            <div class="latest-products-wrap home-2 home-7 padding-t">
-                <div class="container">
+            <!--start-instagram-area-->
+            <div class="instagram-area" style="margin-bottom: 50px; text-align: left; padding-left: 105px; padding-right: 105px;">
+                <div class="container-fluid">
                     <div class="latest-content text-center">
                         <div class="section-heading">
                             <h3><span class="h-color">nos</span> partenaires</h3>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="featured-carousel indicator">
-                        	<?php $partenaires = liste_partenaires($pdo);
-                        		foreach ($partenaires as $part) {
-                        			$photo = liste_par_partenaires_limite($pdo,$part['id_part']);
-                        	?>
-                            <!-- Start-single-product -->
-                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                                <div class="single-product">
-                                    <div class="product-img-wrap" style="margin-bottom: 40px;">
-                                        <a class="product-img" href="https://<?php echo $part['site_web']; ?>" target="_blank"> <img src="data:<?php echo $photo[0][3]; ?>;base64,<?php echo base64_encode($photo[0][1]); ?>"/></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End-single-product -->
-                            <?php } ?>
-                        </div>
+                    <div id="instafeed" class="instafeed">
+                        <?php $partenaires = liste_partenaires($pdo);
+                            foreach ($partenaires as $part) {
+                                $photo = liste_par_partenaires_limite($pdo,$part['id_part']);
+                        ?>
+                        <a href="https://<?php echo $part['site_web']; ?>" target="_blank"><img src="data:<?php echo $photo[0][3]; ?>;base64,<?php echo base64_encode($photo[0][1]); ?>"></a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
-            <!--End-latest-products-wrap-->
+            <!--start-instagram-area-->
 
             <!--Start-footer-wrap-->
             <?php include 'footer.php'; ?>

@@ -11,7 +11,7 @@ include_once 'inc/define.php';
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="CONTENT-TYPE" content="text/html charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php echo _SITE_NAME; ?></title>
     <meta name="description" content="">
@@ -96,8 +96,8 @@ include_once 'inc/define.php';
                             <div class="tab-bar">
                                 <div class="tab-bar-inner">
                                     <ul role="tablist" class="nav nav-tabs">
-                                        <li><a title="Grid" data-toggle="tab" href="#shop-product"><i class="fa fa-th-large"></i><span class="grid" title="Grid">Grille</span></a></li>
-                                        <li class="active"><a title="List" data-toggle="tab" href="#shop-list"><i class="fa fa-list"></i><span class="list">Liste</span></a></li>
+                                        <li class="active"><a title="Grid" data-toggle="tab" href="#shop-product"><i class="fa fa-th-large"></i><span class="grid" title="Grid">Grille</span></a></li>
+                                        <li><a title="List" data-toggle="tab" href="#shop-list"><i class="fa fa-list"></i><span class="list">Liste</span></a></li>
                                     </ul>
                                 </div>
                                 <div class="toolbar">
@@ -112,7 +112,7 @@ include_once 'inc/define.php';
                             <!-- Tab-Content -->
                             <div class="tab-content">
                                 <!-- Shop Product-->
-                                <div id="shop-product" class="tab-pane">
+                                <div id="shop-product" class="tab-pane active">
                                     <div class="row">
                                         <?php
                                         if(isset($_GET['page'])){
@@ -120,26 +120,28 @@ include_once 'inc/define.php';
                                         } else {
                                             $page = 1;
                                         }
+                                        $id_sousCat = $_GET['souscat'];
                                         $num_per_page = 020;
                                         $start_from = ($page-1)*020;
-                                        $arr = liste_limite_produit($pdo,$start_from,$num_per_page);
+                                        $arr = liste_limite_produit($pdo,$id_sousCat,$start_from,$num_per_page);
                                         foreach ($arr as $ar) {
-                                        $arr1 = Liste_par_produits_limite($pdo,$ar[0]);
+                                            $arr1 = Liste_par_produits_limite($pdo,$ar['id_produit']);
+                                            $loc = Location_produit($pdo,$ar['ville_id']);
                                         ?>
                                         <!-- Start-single-product -->
                                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="text-align: center;">
                                             <div class="single-product shop-mar-bottom">
                                                 <div class="product-img-wrap">
-                                                    <a class="product-img" href="#"><img src="data:<?php echo $arr1[0][3]; ?>;base64,<?php echo base64_encode($arr1[0][1]); ?>" alt="<?php echo $arr1[0][2]; ?>"/></a>
+                                                    <a class="product-img" href="#"><img src="data:<?php echo $arr1[0]['type']; ?>;base64,<?php echo base64_encode($arr1[0]['data']); ?>" alt="<?php echo $arr1[0]['nom_photo']; ?>"/></a>
                                                     <div class="add-to-cart">
-                                                        <a href="panier_ajouter.php?action=ajout&prod=<?php echo $ar[0]; ?>&qtte=1&prix=<?php echo $ar[4] ?>&loc=categorie.php?souscat=<?php echo $ar[0]; ?>" title="add to cart">
+                                                        <a href="panier_ajouter.php?action=ajout&prod=<?php echo $ar['id_produit']; ?>&qtte=1&prix=<?php echo $ar['prix'] ?>&loc=categorie.php?souscat=<?php echo $ar['sous_categorie_id']; ?>" title="add to cart">
                                                             <div><i class="fa fa-shopping-cart"></i><span>Ajouter au panier</span></div>
                                                         </a>
                                                     </div>
                                                 </div>
                                                 <div class="product-info text-center">
                                                     <div class="product-content">
-                                                        <a href="#"><h3 class="pro-name"><?php echo $ar[2]; ?></h3></a>
+                                                        <a href="#"><h3 class="pro-name"><?php echo $ar['designation']; ?></h3></a>
                                                         <div class="pro-rating">
                                                             <ul>
                                                                 <li><i class="fa fa-star"></i></li>
@@ -149,9 +151,13 @@ include_once 'inc/define.php';
                                                                 <li class="r-grey"><i class="fa fa-star-half-o"></i></li>
                                                             </ul>
                                                         </div>
+                                                        <div class="pro-localisation">
+                                                            <span class="localisation-text">Localisation:</span>
+                                                            <span class="normal-localisation"><?php echo $loc[0]['nom_ville']; ?></span>
+                                                        </div>
                                                         <div class="pro-price">
                                                             <span class="price-text">Prix:</span>
-                                                            <span class="normal-price"><?php echo $ar[4]; ?> FCFA</span>
+                                                            <span class="normal-price"><?php echo $ar['prix']; ?> FCFA</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -163,7 +169,7 @@ include_once 'inc/define.php';
                                 </div>
                                 <!-- End-Shop-Product-->
                                 <!-- Shop List -->
-                                <div id="shop-list" class="tab-pane active">
+                                <div id="shop-list" class="tab-pane">
                                     <!-- start-Single-Shop-list-->
                                     <div class="single-shop">
                                         <div class="row">
@@ -173,35 +179,41 @@ include_once 'inc/define.php';
                                             } else {
                                                 $page = 1;
                                             }
+                                            $id_sousCat = $_GET['souscat'];
                                             $num_per_page = 020;
                                             $start_from = ($page-1)*020;
-                                            $arr = liste_limite_produit($pdo,$start_from,$num_per_page);
+                                            $arr = liste_limite_produit($pdo,$id_sousCat,$start_from,$num_per_page);
                                             foreach ($arr as $ar) {
-                                            $arr1 = Liste_par_produits_limite($pdo,$ar[0]);
+                                                $arr1 = Liste_par_produits_limite($pdo,$ar[0]);
+                                                $loc = Location_produit($pdo,$ar['ville_id']);
                                             ?>
                                             <!-- single-product-start -->
-                                            <div class="single-product">
+                                            <div class="single-product" style="margin-bottom: 40px;">
                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                                     <div class="product-img-wrap">
-                                                        <a class="product-img" href="#"> <img src="data:<?php echo $arr1[0][3]; ?>;base64,<?php echo base64_encode($arr1[0][1]); ?>" alt="<?php echo $arr1[0][2]; ?>"/></a>
+                                                        <a class="product-img" href="#"> <img src="data:<?php echo $arr1[0]['type']; ?>;base64,<?php echo base64_encode($arr1[0]['data']); ?>" alt="<?php echo $arr1[0]['nom_photo']; ?>"/></a>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-left: 70px; margin-top: 20px;">
+                                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                                     <div class="product-info text-left">
                                                         <div class="product-content shop">
-                                                            <a href="#"><h3 class="pro-name"><?php echo $ar[2]; ?></h3></a>
+                                                            <a href="#"><h3 class="pro-name"><?php echo $ar['designation']; ?></h3></a>
+                                                            <div class="pro-localisation">
+                                                                <span class="localisation-text">Localisation:</span>
+                                                                <span class="normal-localisation"><?php echo $loc[0]['nom_ville']; ?></span>
+                                                            </div>
                                                             <div class="pro-price">
                                                                 <span class="price-text">Prix:</span>
-                                                                <span class="normal-price"><?php echo $ar[4]; ?> FCFA</span>
+                                                                <span class="normal-price"><?php echo $ar['prix']; ?> FCFA</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="shop-article text-left">
-                                                        <p><?php echo $ar[3]; ?></p>
+                                                        <p><?php echo $ar['description']; ?></p>
                                                     </div>
-                                                    <div class="shop-button-area shop-list" style="margin-left: -30px; margin-top: -1px;">
+                                                    <div class="shop-button-area shop-list">
                                                         <div class="add-to-cartbest shop">
-                                                            <a href="panier_ajouter.php?prod=<?php echo $ar[0]; ?>&qtte=1&prix=<?php echo $ar[4]; ?>&loc=categorie.php?souscat=<?php echo $ar[0]; ?>" title="add to cart">
+                                                            <a href="panier_ajouter.php?prod=<?php echo $ar['id_produit']; ?>&qtte=1&prix=<?php echo $ar['prix']; ?>&loc=categorie.php?souscat=<?php echo $ar['sous_categorie_id']; ?>" title="add to cart">
                                                                 <div><span>Ajouter au panier</span></div>
                                                             </a>
                                                         </div>
@@ -221,8 +233,8 @@ include_once 'inc/define.php';
                             <div class="tab-bar tab-bar-bottom">
                                 <div class="tab-bar-inner">
                                     <ul role="tablist" class="nav nav-tabs">
-                                        <li><a title="Grid" data-toggle="tab" href="#shop-product"><i class="fa fa-th-large"></i><span class="grid" title="Grid">Grille</span></a></li>
-                                        <li class="active"><a title="List" data-toggle="tab" href="#shop-list"><i class="fa fa-list"></i><span class="list">Liste</span></a></li>
+                                        <li class="active"><a title="Grid" data-toggle="tab" href="#shop-product"><i class="fa fa-th-large"></i><span class="grid" title="Grid">Grille</span></a></li>
+                                        <li><a title="List" data-toggle="tab" href="#shop-list"><i class="fa fa-list"></i><span class="list">Liste</span></a></li>
                                     </ul>
                                 </div>
                                 <div class="toolbar">

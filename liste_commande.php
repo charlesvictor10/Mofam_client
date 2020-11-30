@@ -12,7 +12,7 @@ include_once 'inc/define.php';
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php echo _SITE_NAME; ?></title>
     <meta name="description" content="">
@@ -103,10 +103,10 @@ include_once 'inc/define.php';
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th class="product-name">Numéro commande</th>
-                                            <th class="product-price">Date commande</th>
-                                            <th class="product-price">Etat</th>
-                                            <th class="product-subtotal">Montant total</th>
+                                            <th class="product-name" style="font-weight: 900">Numéro commande</th>
+                                            <th class="product-price" style="font-weight: 900">Date commande</th>
+                                            <th class="product-price" style="font-weight: 900">Etat</th>
+                                            <th class="product-subtotal" style="font-weight: 900">Montant total</th>
                                         </tr>
                                         </thead>
                                         <tbody>

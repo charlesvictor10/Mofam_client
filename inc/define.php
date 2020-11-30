@@ -1,6 +1,6 @@
 <?php 
-   define('_SITE_NAME','Mofam | Site e-commerce pour la vente des produits locaux');
-   define('_TAG_NAME','Mofam | Site e-commerce pour la vente des produits locaux');
+   define('_SITE_NAME','Mofam');
+   define('_TAG_NAME','Mofam');
    define('_ERROR_ADDRESS','http://localhost/Mofam/404');
-   define('_URL','http://localhost/Mofam/');
+   define('_URL','http://localhost/mofam/');
 ?>

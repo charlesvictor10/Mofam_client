@@ -11,7 +11,7 @@ include_once 'inc/define.php';
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php echo _SITE_NAME; ?></title>
     <meta name="description" content="">
@@ -194,16 +194,13 @@ include_once 'inc/define.php';
                                 <input type="text" name="prenom" value="<?php echo $prenom; ?>"/>
                                 <label>Nom</label>
                                 <input type="text" name="nom" value="<?php echo $nom; ?>"/>
-                                <label>Adresse email</label>
-                                <input type="text" name="email" value="<?php echo $email; ?>"/>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <label>Téléphone</label>
                                 <input type="text" name="tel" value="<?php echo $tel; ?>"/>
-                                <label>Mot de passe</label>
-                                <input type="password" name="password" value="<?php echo $password; ?>"/>
-                                <label>Numero acheteur</label>
-                                <input type="text" name="id_acheteur" value="<?php echo $id_acheteur; ?>" disabled/>
+                                <label>Adresse email</label>
+                                <input type="text" name="email" value="<?php echo $email; ?>"/>
+                                <input type="hidden" name="id_acheteur" value="<?php echo $id_acheteur; ?>"/>
                             </div>
                             <input class="login-sub" type="submit" name="update" value="Mettre à jour" style="display: block; position: relative; margin-left: auto; margin-right: auto;"/>
                         </form>

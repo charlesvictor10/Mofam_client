@@ -1404,7 +1404,11 @@ a h3.pro-name { font-size: 20px;
     display: inline-block;
     font-size: 15px;
 }
-.pro-price { display: inline-block;
+.pro-price {
+    display: inline-block;
+    line-height: 20px;
+}
+.pro-localisation {
     line-height: 20px;
 }
 .price-text,.home-2 .price-text { color: #f00;
@@ -1412,9 +1416,18 @@ a h3.pro-name { font-size: 20px;
     font-weight: 600;
     letter-spacing: 1px;
 }
+.localisation-text,.home-2 .localisation-text { color: #f00;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
 .normal-price { font-size: 16px;
   font-weight: 600;
   padding: 0 5px 0 0;
+}
+.normal-localisation { font-size: 16px;
+    font-weight: 600;
+    padding: 0 5px 0 0;
 }
 .quality-single-p .r-grey,.old-price {  color: #eb0505;
     font-size: 14px;
@@ -2187,14 +2200,14 @@ label { display: inline-block;
 .social-icon a.twitt:hover {  background: #2AA6F2;
     border: 1px solid #2AA6F2;
 }
-.social-icon a.tumb:hover {  background: #148B46;
-    border: 1px solid  #148B46;
+.social-icon a.tumb:hover {  background: #D46B20;
+    border: 1px solid  #D46B20;
 }
-.social-icon a.google:hover {  background: #4285F4;
-    border: 1px solid  #4285F4;
+.social-icon a.google:hover {  background: #d8241f;
+    border: 1px solid  #d8241f;
 }
-.social-icon a.dribb:hover { background: #E46092;
-    border: 1px solid  #E46092;
+.social-icon a.linkedin:hover { background: #3e61be;
+    border: 1px solid  #3e61be;
 }
 /*-------------------------
     18. Home-2

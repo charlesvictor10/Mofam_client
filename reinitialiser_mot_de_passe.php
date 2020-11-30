@@ -11,7 +11,7 @@ include_once 'inc/define.php';
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php echo _SITE_NAME; ?></title>
     <meta name="description" content="">
